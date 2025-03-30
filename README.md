@@ -17,7 +17,7 @@ phonemes = katakana2phonemes(katakana)
 print(phonemes)
 # Output: ["h", "a", "r", "o", ":", "、", "w", "a", ":", "r", "u", "dy", "o", "！"]
 print(katakana2phonemes(katakana, normalize=True))
-# Output: ["h", "a", "r", "o", ":", "w", "a", ":", "r", "u", "d", "y", "o"]
+# Output: ["h", "a", "r", "o", ":", "w", "a", ":", "r", "u", "dy", "o"]
 ```
 
 ```python
@@ -32,6 +32,12 @@ print(katakana)
 
 ## Note
 
+
+### General Notes
+- Only full-width Katakana are processed.
+- If a character is not found in the mapping and normalize is False, the character is passed through unchanged.
+- If normalize is True, characters not present in the mapping (e.g., non-Katakana characters) are excluded.
+
 ### Special Characters
 - The sokuon `ッ` is converted to the phoneme `q`.
 - The prolonged sound mark `ー` is converted to the phoneme `:`.
@@ -42,8 +48,5 @@ print(katakana)
 ### Rare Consonants
 - Some rare consonants like `shw`, `dy`, `tsy`, `bw`, ... are included (e.g. `シュェ` -> `["shw", "e"]`, `デョ` -> `["dy", "o"]`).
 - See `src/kana2p/const.py` for the full list of phoneme mappings.
+- See also: https://ja.wikipedia.org/wiki/%E6%8D%A8%E3%81%A6%E4%BB%AE%E5%90%8D
 
-### General Notes
-- Only full-width Katakana are processed.
-- If a character is not found in the mapping and normalize is False, the character is passed through unchanged.
-- If normalize is True, characters not present in the mapping (e.g., non-Katakana characters) are excluded.
